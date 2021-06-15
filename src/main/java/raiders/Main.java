@@ -18,15 +18,16 @@ public class Main implements Runnable {
     public void init() {
         System.out.println("Initializing Star Raiders");
         window = new Window(WIDTH, HEIGHT, "Star Raiders");
+        window.setBackgroundColor(0, 0, 0.1f);
         window.create();
     }
 
     public void run() {
         init();
-        while (!window.shouldClose()) {
+        while (!window.shouldClose() && !Input.isKeyDown(GLFW.GLFW_KEY_ESCAPE)) {
             update();
             render();
-            //if (Input.isKeyDown(GLFW.GLFW_KEY_ESCAPE)) return;
+            if (Input.isKeyDown(GLFW.GLFW_KEY_F11)) window.setFullscreen(!window.isFullscreen());
         }
         window.destroy();
     }
