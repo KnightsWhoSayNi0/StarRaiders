@@ -34,7 +34,7 @@ public class Window {
 
         GLFW.glfwShowWindow(window);
 
-        GLFW.glfwSwapInterval(1); // limits frame rate to 60fps TODO find a work around. i want to play star raiders at 99999999 fps god dammit
+        GLFW.glfwSwapInterval(1); // limits frame rate to vsync... TODO possible work around?
     }
 
     public void update() {
