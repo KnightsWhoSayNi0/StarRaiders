@@ -8,6 +8,8 @@ public class Window {
     private int width, height;
     private String title;
     private long window;
+    public int frames;
+    public long time;
 
     public Window(int width, int height, String title) {
         this.width = width;
@@ -35,10 +37,18 @@ public class Window {
         GLFW.glfwShowWindow(window);
 
         GLFW.glfwSwapInterval(1); // limits frame rate to vsync... TODO possible work around?
+
+        time = System.currentTimeMillis();
     }
 
     public void update() {
         GLFW.glfwPollEvents();
+        frames++;
+        if (System.currentTimeMillis() > time + 1000) {
+            GLFW.glfwSetWindowTitle(window, title + " | FPS: " + frames);
+            time = System.currentTimeMillis();
+            frames = 0;
+        }
     }
 
     public void swapBuffers() {
