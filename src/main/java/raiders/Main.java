@@ -1,6 +1,8 @@
 package raiders;
 
+import engine.io.Input;
 import engine.io.Window;
+import org.lwjgl.glfw.GLFW;
 
 public class Main implements Runnable {
 
@@ -24,11 +26,14 @@ public class Main implements Runnable {
         while (!window.shouldClose()) {
             update();
             render();
+            //if (Input.isKeyDown(GLFW.GLFW_KEY_ESCAPE)) return;
         }
+        window.destroy();
     }
 
     private void update() {
         window.update();
+        //if (Input.isButtonDown(GLFW.GLFW_MOUSE_BUTTON_LEFT)) System.out.println("X: " + Input.getMouseX() + ", Y: " + Input.getMouseY());
     }
 
     private void render() {
