@@ -39,6 +39,18 @@
                 <lwjgl.natives>natives-windows</lwjgl.natives>
             </properties>
         </profile>
+        <profile>
+            <id>lwjgl-natives-macos-amd64</id> <!-- hopefully never gonna use these !-->
+            <activation>
+                <os>
+                    <family>mac</family>
+                    <arch>amd64</arch>
+                </os>
+            </activation>
+            <properties>
+                <lwjgl.natives>natives-macos</lwjgl.natives>
+            </properties>
+        </profile>
     </profiles>
 
     <dependencyManagement>

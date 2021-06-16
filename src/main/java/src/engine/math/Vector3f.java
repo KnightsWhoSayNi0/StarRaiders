@@ -1,4 +1,4 @@
-package engine.math;
+package src.engine.math;
 
 public class Vector3f {
 

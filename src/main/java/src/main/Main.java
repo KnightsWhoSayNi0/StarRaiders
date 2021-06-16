@@ -1,11 +1,12 @@
-package raiders;
+package src.main;
 
-import engine.graphics.Mesh;
-import engine.graphics.Renderer;
-import engine.graphics.Vertex;
-import engine.io.Input;
-import engine.io.Window;
-import engine.math.Vector3f;
+import src.engine.graphics.Mesh;
+import src.engine.graphics.Renderer;
+import src.engine.graphics.Shader;
+import src.engine.graphics.Vertex;
+import src.engine.io.Input;
+import src.engine.io.Window;
+import src.engine.math.Vector3f;
 import org.lwjgl.glfw.GLFW;
 
 public class Main implements Runnable {
@@ -13,6 +14,7 @@ public class Main implements Runnable {
     public Thread game;
     public Window window;
     public Renderer renderer;
+    public Shader shader;
     public final int WIDTH = 1920, HEIGHT = 1080;
 
     public Mesh mesh = new Mesh(new Vertex[] {
@@ -33,10 +35,12 @@ public class Main implements Runnable {
     public void init() {
         System.out.println("Initializing Star Raiders");
         window = new Window(WIDTH, HEIGHT, "Star Raiders");
-        renderer = new Renderer();
+        shader = new Shader("/shaders/mainVertex.glsl", "/shaders/mainFragment.glsl");
+        renderer = new Renderer(shader);
         window.setBackgroundColor(0, 0, 0.1f);
         window.create();
         mesh.create();
+        shader.create();
     }
 
     public void run() {

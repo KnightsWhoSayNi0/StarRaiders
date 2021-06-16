@@ -1,6 +1,6 @@
-package engine.graphics;
+package src.engine.graphics;
 
-import engine.math.Vector3f;
+import src.engine.math.Vector3f;
 
 public class Vertex {
 

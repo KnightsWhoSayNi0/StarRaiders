@@ -1,6 +1,6 @@
-package engine.io;
+package src.engine.io;
 
-import engine.math.Vector3f;
+import src.engine.math.Vector3f;
 import org.lwjgl.glfw.GLFW;
 import org.lwjgl.glfw.GLFWVidMode;
 import org.lwjgl.glfw.GLFWWindowSizeCallback;
