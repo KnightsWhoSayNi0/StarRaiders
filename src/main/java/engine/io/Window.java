@@ -1,7 +1,7 @@
 package engine.io;
 
+import engine.math.Vector3f;
 import org.lwjgl.glfw.GLFW;
-import org.lwjgl.glfw.GLFWGamepadState;
 import org.lwjgl.glfw.GLFWVidMode;
 import org.lwjgl.glfw.GLFWWindowSizeCallback;
 import org.lwjgl.opengl.GL;
@@ -15,7 +15,7 @@ public class Window {
     public int frames;
     public long time;
     public Input input;
-    private float backgroundR, backgroundG, backgroundB;
+    private Vector3f background = new Vector3f(0, 0, 0);
     private GLFWWindowSizeCallback sizeCallback;
     private boolean isResized;
     private boolean isFullscreen;
@@ -80,7 +80,7 @@ public class Window {
             GL11.glViewport(0, 0, width, height);
             isResized = false;
         }
-        GL11.glClearColor(backgroundR, backgroundG, backgroundB, 1.0f);
+        GL11.glClearColor(background.getX(), background.getY(), background.getZ(), 1.0f);
         GL11.glClear(GL11.GL_COLOR_BUFFER_BIT | GL11.GL_DEPTH_BUFFER_BIT);
         GLFW.glfwPollEvents();
         frames++;
@@ -108,9 +108,7 @@ public class Window {
     }
 
     public void setBackgroundColor(float r, float g, float b) {
-        backgroundR = r;
-        backgroundG = g;
-        backgroundB = b;
+        background.set(r, g, b);
     }
 
     public int getWidth() {
